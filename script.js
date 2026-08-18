@@ -1,217 +1,217 @@
 /* =========================
    MOBILE MENU
-   ========================= */
+========================= */
 
-   const menuBtn = document.getElementById("menuBtn");
-   const navMenu = document.getElementById("navMenu");
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
 
-   menuBtn.addEventListener("click", () => {
+menuBtn.addEventListener("click", () => {
 
-       navMenu.classList.toggle("show");
+    navMenu.classList.toggle("show");
 
-           const icon = menuBtn.querySelector("i");
+    const icon = menuBtn.querySelector("i");
 
-               if (navMenu.classList.contains("show")) {
-                       icon.classList.remove("fa-bars");
-                               icon.classList.add("fa-xmark");
-                                   } else {
-                                           icon.classList.remove("fa-xmark");
-                                                   icon.classList.add("fa-bars");
-                                                       }
-                                                       });
+    if (navMenu.classList.contains("show")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+    } else {
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+    }
+});
 
 
-                                                       /* Close mobile menu when clicking a link */
+/* Close mobile menu when clicking a link */
 
-                                                       document.querySelectorAll(".nav-link").forEach(link => {
+document.querySelectorAll(".nav-link").forEach(link => {
 
-                                                           link.addEventListener("click", () => {
+    link.addEventListener("click", () => {
 
-                                                                   navMenu.classList.remove("show");
+        navMenu.classList.remove("show");
 
-                                                                           const icon = menuBtn.querySelector("i");
+        const icon = menuBtn.querySelector("i");
 
-                                                                                   icon.classList.remove("fa-xmark");
-                                                                                           icon.classList.add("fa-bars");
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
 
-                                                                                               });
+    });
 
-                                                                                               });
+});
 
 
-                                                                                               /* =========================
-                                                                                                  TYPING EFFECT
-                                                                                                  ========================= */
+/* =========================
+   TYPING EFFECT
+========================= */
 
-                                                                                                  const typingElement = document.getElementById("typing");
+const typingElement = document.getElementById("typing");
 
-                                                                                                  const words = [
-                                                                                                      "Frontend Developer",
-                                                                                                          "Java Learner",
-                                                                                                              "Web Developer",
-                                                                                                                  "Problem Solver"
-                                                                                                                  ];
+const words = [
+    "Frontend Developer",
+    "Java Learner",
+    "Web Developer",
+    "Problem Solver"
+];
 
-                                                                                                                  let wordIndex = 0;
-                                                                                                                  let charIndex = 0;
-                                                                                                                  let deleting = false;
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
-                                                                                                                  function typeEffect() {
+function typeEffect() {
 
-                                                                                                                      const currentWord = words[wordIndex];
+    const currentWord = words[wordIndex];
 
-                                                                                                                          if (!deleting) {
+    if (!deleting) {
 
-                                                                                                                                  typingElement.textContent =
-                                                                                                                                              currentWord.substring(0, charIndex + 1);
+        typingElement.textContent =
+            currentWord.substring(0, charIndex + 1);
 
-                                                                                                                                                      charIndex++;
+        charIndex++;
 
-                                                                                                                                                              if (charIndex === currentWord.length) {
+        if (charIndex === currentWord.length) {
 
-                                                                                                                                                                          deleting = true;
+            deleting = true;
 
-                                                                                                                                                                                      setTimeout(typeEffect, 1500);
+            setTimeout(typeEffect, 1500);
 
-                                                                                                                                                                                                  return;
-                                                                                                                                                                                                          }
+            return;
+        }
 
-                                                                                                                                                                                                              } else {
+    } else {
 
-                                                                                                                                                                                                                      typingElement.textContent =
-                                                                                                                                                                                                                                  currentWord.substring(0, charIndex - 1);
+        typingElement.textContent =
+            currentWord.substring(0, charIndex - 1);
 
-                                                                                                                                                                                                                                          charIndex--;
+        charIndex--;
 
-                                                                                                                                                                                                                                                  if (charIndex === 0) {
+        if (charIndex === 0) {
 
-                                                                                                                                                                                                                                                              deleting = false;
+            deleting = false;
 
-                                                                                                                                                                                                                                                                          wordIndex++;
+            wordIndex++;
 
-                                                                                                                                                                                                                                                                                      if (wordIndex >= words.length) {
-                                                                                                                                                                                                                                                                                                      wordIndex = 0;
-                                                                                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                                                                                                                              }
+            if (wordIndex >= words.length) {
+                wordIndex = 0;
+            }
+        }
+    }
 
-                                                                                                                                                                                                                                                                                                                                  setTimeout(
-                                                                                                                                                                                                                                                                                                                                          typeEffect,
-                                                                                                                                                                                                                                                                                                                                                  deleting ? 50 : 100
-                                                                                                                                                                                                                                                                                                                                                      );
-                                                                                                                                                                                                                                                                                                                                                      }
+    setTimeout(
+        typeEffect,
+        deleting ? 50 : 100
+    );
+}
 
-                                                                                                                                                                                                                                                                                                                                                      typeEffect();
+typeEffect();
 
 
-                                                                                                                                                                                                                                                                                                                                                      /* =========================
-                                                                                                                                                                                                                                                                                                                                                         NAVBAR ON SCROLL
-                                                                                                                                                                                                                                                                                                                                                         ========================= */
+/* =========================
+   NAVBAR ON SCROLL
+========================= */
 
-                                                                                                                                                                                                                                                                                                                                                         const navbar = document.querySelector(".navbar");
+const navbar = document.querySelector(".navbar");
 
-                                                                                                                                                                                                                                                                                                                                                         window.addEventListener("scroll", () => {
+window.addEventListener("scroll", () => {
 
-                                                                                                                                                                                                                                                                                                                                                             if (window.scrollY > 30) {
-                                                                                                                                                                                                                                                                                                                                                                     navbar.classList.add("scrolled");
-                                                                                                                                                                                                                                                                                                                                                                         } else {
-                                                                                                                                                                                                                                                                                                                                                                                 navbar.classList.remove("scrolled");
-                                                                                                                                                                                                                                                                                                                                                                                     }
+    if (window.scrollY > 30) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
 
-                                                                                                                                                                                                                                                                                                                                                                                     });
+});
 
 
-                                                                                                                                                                                                                                                                                                                                                                                     /* =========================
-                                                                                                                                                                                                                                                                                                                                                                                        ACTIVE NAVIGATION
-                                                                                                                                                                                                                                                                                                                                                                                        ========================= */
+/* =========================
+   ACTIVE NAVIGATION
+========================= */
 
-                                                                                                                                                                                                                                                                                                                                                                                        const sections = document.querySelectorAll("section[id]");
-                                                                                                                                                                                                                                                                                                                                                                                        const navLinks = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-link");
 
-                                                                                                                                                                                                                                                                                                                                                                                        window.addEventListener("scroll", () => {
+window.addEventListener("scroll", () => {
 
-                                                                                                                                                                                                                                                                                                                                                                                            let currentSection = "";
+    let currentSection = "";
 
-                                                                                                                                                                                                                                                                                                                                                                                                sections.forEach(section => {
+    sections.forEach(section => {
 
-                                                                                                                                                                                                                                                                                                                                                                                                        const sectionTop = section.offsetTop - 150;
-                                                                                                                                                                                                                                                                                                                                                                                                                const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.offsetHeight;
 
-                                                                                                                                                                                                                                                                                                                                                                                                                        if (
-                                                                                                                                                                                                                                                                                                                                                                                                                                    window.scrollY >= sectionTop &&
-                                                                                                                                                                                                                                                                                                                                                                                                                                                window.scrollY < sectionTop + sectionHeight
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        ) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    currentSection = section.getAttribute("id");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+        if (
+            window.scrollY >= sectionTop &&
+            window.scrollY < sectionTop + sectionHeight
+        ) {
+            currentSection = section.getAttribute("id");
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                });
+    });
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    navLinks.forEach(link => {
+    navLinks.forEach(link => {
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            link.classList.remove("active");
+        link.classList.remove("active");
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    if (
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                link.getAttribute("href") ===
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `#${currentSection}`
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                link.classList.add("active");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+        if (
+            link.getAttribute("href") ===
+            `#${currentSection}`
+        ) {
+            link.classList.add("active");
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            });
+    });
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            });
+});
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            /* =========================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               SCROLL REVEAL
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ========================= */
+/* =========================
+   SCROLL REVEAL
+========================= */
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const revealElements = document.querySelectorAll(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ".skill-card, .project-card, .stat-card, .timeline-item, .learning-card"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   );
+const revealElements = document.querySelectorAll(
+    ".skill-card, .project-card, .stat-card, .timeline-item, .learning-card"
+);
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   revealElements.forEach(element => {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       element.classList.add("reveal");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       });
+revealElements.forEach(element => {
+    element.classList.add("reveal");
+});
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const observer = new IntersectionObserver(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           (entries, observer) => {
+const observer = new IntersectionObserver(
+    (entries, observer) => {
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   entries.forEach(entry => {
+        entries.forEach(entry => {
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               if (entry.isIntersecting) {
+            if (entry.isIntersecting) {
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               entry.target.classList.add("visible");
+                entry.target.classList.add("visible");
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               observer.unobserve(entry.target);
+                observer.unobserve(entry.target);
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           }
+            }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   });
+        });
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   threshold: 0.15
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       );
+    },
+    {
+        threshold: 0.15
+    }
+);
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       revealElements.forEach(element => {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           observer.observe(element);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           });
+revealElements.forEach(element => {
+    observer.observe(element);
+});
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           /* =========================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              CURRENT YEAR
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ========================= */
+/* =========================
+   CURRENT YEAR
+========================= */
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              const year = new Date().getFullYear();
+const year = new Date().getFullYear();
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              const copyright =
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  document.querySelector(".copyright");
+const copyright =
+    document.querySelector(".copyright");
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  if (copyright) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      copyright.textContent =
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              `© ${year} Harjit Singh`;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          link.addEventListener9
+if (copyright) {
+    copyright.textContent =
+        `© ${year} Harjit Singh`;
+}
